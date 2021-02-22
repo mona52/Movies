@@ -1,4 +1,4 @@
-package ru.netology.movies.domain;
+package ru.netology.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
