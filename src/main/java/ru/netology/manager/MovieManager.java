@@ -1,11 +1,21 @@
-package ru.netology.movies.manager;
+package ru.netology.manager;
 
-import ru.netology.movies.domain.Movie;
+import ru.netology.domain.Movie;
 
 public class MovieManager {
+    private int numberMovies = 10;
 
+    public int getNumberMovies() {
+        return numberMovies;
+    }
 
-        private Movie[] items = new Movie[0];
+    public void setNumberMovies(int numberMovies) {
+        this.numberMovies = numberMovies;
+    }
+
+    public MovieManager(int numberMovies) { }
+
+    private Movie[] items = new Movie[0];
 
         public void add(Movie item) {
             // создаём новый массив размером на единицу больше
@@ -21,10 +31,18 @@ public class MovieManager {
             int lastIndex = tmp.length - 1;
             tmp[lastIndex] = item;
             items = tmp;
+            System.out.println("длина массива с фильмами " + items.length);
         }
 
         public Movie[] getAll() {
-            Movie[] result = new Movie[items.length];
+            int resultLength = items.length;
+            if (resultLength > getNumberMovies()) {
+                resultLength = getNumberMovies();
+            }
+
+            System.out.println("Длина ленты " +resultLength);
+
+            Movie[] result = new Movie[resultLength];
             // перебираем массив в прямом порядке
             // но кладём в результаты в обратном
             for (int i = 0; i < result.length; i++) {
